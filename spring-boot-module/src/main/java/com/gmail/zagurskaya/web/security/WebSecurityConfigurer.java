@@ -21,6 +21,7 @@ import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ADMIN;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_CASH;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_CONTROLLER;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_LOGIN;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
 
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -51,15 +52,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
     }
+
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(URL_CASH)
-                .hasAuthority(KASSIR)
-                .antMatchers(URL_CONTROLLER)
-                .hasAuthority(CONTROLLER)
-                .antMatchers(URL_ADMIN)
+                .antMatchers(URL_PROFILE)
+//                .antMatchers(URL_ADMIN)
                 .hasAuthority(ADMIN)
-                .antMatchers("/", URL_403)
+                .antMatchers("/", "/allQuotes", "/top", "/graph", URL_403)
                 .permitAll()
                 .and()
                 .formLogin()
