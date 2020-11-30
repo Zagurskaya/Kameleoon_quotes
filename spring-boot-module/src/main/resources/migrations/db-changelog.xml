@@ -54,7 +54,7 @@
     </changeSet>
 
     <changeSet id="4" author="zagurskaya@gmail.com">
-        <createTable tableName="reviews">
+        <createTable tableName="quotes">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -236,7 +236,7 @@
     </changeSet>
 
     <changeSet id="24" author="zagurskaya@gmail.com">
-        <insert tableName="reviews">
+        <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
             <column name="description" value="new rateKB $ 2.51"/>
@@ -245,7 +245,7 @@
     </changeSet>
 
     <changeSet id="25" author="zagurskaya@gmail.com">
-        <insert tableName="reviews">
+        <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
             <column name="description" value="new rateKB $ 2.51"/>
@@ -254,7 +254,7 @@
     </changeSet>
 
     <changeSet id="26" author="zagurskaya@gmail.com">
-        <insert tableName="reviews">
+        <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="3"/>
             <column name="description" value="new rateKB $ 2.52"/>
@@ -263,7 +263,7 @@
 
     </changeSet>
     <changeSet id="27" author="zagurskaya@gmail.com">
-        <insert tableName="reviews">
+        <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
             <column name="description" value="new rateKB $ 2.53"/>

@@ -16,18 +16,18 @@ public class URLConstant {
     public static final String URL_ADMINISTRATOR_USERS_DELETE = "/users/delete";
     public static final String URL_ADMINISTRATOR_UPDATE_ROLE = "/users/update_role";
     public static final String URL_ADMINISTRATOR_UPDATE_PASSWORD = "/users/update_password";
-    public static final String URL_ADMINISTRATOR_REVIEWS = "/reviews";
-    public static final String URL_ADMINISTRATOR_REVIEWS_DELETE = "/reviews/delete";
+    public static final String URL_ADMINISTRATOR_quotes = "/quotes";
+    public static final String URL_ADMINISTRATOR_quotes_DELETE = "/quotes/delete";
     public static final String URL_ADMINISTRATOR_EXIT = "/exit";
 
     public static final String PATH_ADMINISTRATOR_USERS = "administrator/users";
     public static final String PATH_ADMINISTRATOR_ADMIN = "administrator/admin";
     public static final String PATH_ADMINISTRATOR_NEW_USERS = "administrator/new_user";
     public static final String PATH_ADMINISTRATOR_NEW_USERS_POST = "redirect:/admin/users";
-    public static final String PATH_ADMINISTRATOR_REVIEWS = "administrator/reviews";
-    public static final String PATH_ADMINISTRATOR_REVIEWS_REDIRECT = "redirect:/admin/reviews";
+    public static final String PATH_ADMINISTRATOR_quotes = "administrator/quotes";
+    public static final String PATH_ADMINISTRATOR_quotes_REDIRECT = "redirect:/admin/quotes";
 
-    public static final String PATH_QUOTES = "reviews";
+    public static final String PATH_QUOTES = "quotes";
 
 
 

@@ -281,11 +281,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zagurskaya_cash`.`reviews`
+-- Table `zagurskaya_cash`.`quotes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zagurskaya_cash`.`reviews` ;
+DROP TABLE IF EXISTS `zagurskaya_cash`.`quotes` ;
 
-CREATE TABLE IF NOT EXISTS `zagurskaya_cash`.`reviews` (
+CREATE TABLE IF NOT EXISTS `zagurskaya_cash`.`quotes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NULL,
   `userId` INT NOT NULL,
@@ -500,14 +500,14 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `zagurskaya_cash`.`reviews`
+-- Data for table `zagurskaya_cash`.`quotes`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `zagurskaya_cash`;
-INSERT INTO `zagurskaya_cash`.`reviews` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-01', 2, 'new rateKB $ 2.51, everything is bad', 0);
-INSERT INTO `zagurskaya_cash`.`reviews` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-01', 3, 'new rateKB $ 2.52, everything is bad', 0);
-INSERT INTO `zagurskaya_cash`.`reviews` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-02', 2, 'new rateKB $ 2.53, everything is bad', 0);
-INSERT INTO `zagurskaya_cash`.`reviews` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-02', 3, 'new rateKB $ 2.54, everything is bad', 1);
+INSERT INTO `zagurskaya_cash`.`quotes` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-01', 2, 'new rateKB $ 2.51, everything is bad', 0);
+INSERT INTO `zagurskaya_cash`.`quotes` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-01', 3, 'new rateKB $ 2.52, everything is bad', 0);
+INSERT INTO `zagurskaya_cash`.`quotes` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-02', 2, 'new rateKB $ 2.53, everything is bad', 0);
+INSERT INTO `zagurskaya_cash`.`quotes` (`id`, `date`, `userId`, `description`, `isNotOpen`) VALUES (DEFAULT, '2018-05-02', 3, 'new rateKB $ 2.54, everything is bad', 1);
 
 COMMIT;
 

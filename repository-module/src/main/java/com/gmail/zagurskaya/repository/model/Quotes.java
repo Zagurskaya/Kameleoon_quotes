@@ -1,6 +1,5 @@
 package com.gmail.zagurskaya.repository.model;
 
-import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
@@ -12,14 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-;
 import java.sql.Date;
 
 @Entity
-@Table(name = "reviews")
-//@SQLDelete(sql = "UPDATE reviews SET isnotopen = 1 WHERE id=?")
-@Where(clause = "isnotopen = 0")
-public class Reviews {
+@Table(name = "quotes")
+public class Quotes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -69,7 +65,7 @@ public class Reviews {
 
     @Override
     public String toString() {
-        return "Reviews{" +
+        return "quotes{" +
                 "id=" + id +
                 ", date=" + date +
                 ", user=" + user +

@@ -4,7 +4,7 @@ import java.sql.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class ReviewsDTO {
+public class QuotesDTO {
     @NotNull
     private Long id;
     @NotNull
@@ -53,7 +53,7 @@ public class ReviewsDTO {
 
     @Override
     public String toString() {
-        return "ReviewsDTO{" +
+        return "quotesDTO{" +
                 "id=" + id +
                 ", date=" + date +
                 ", user=" + user +
