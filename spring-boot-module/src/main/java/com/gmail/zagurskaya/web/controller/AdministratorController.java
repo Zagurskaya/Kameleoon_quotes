@@ -34,10 +34,11 @@ import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ADMINISTRATOR_RE
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ADMINISTRATOR_UPDATE_PASSWORD;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ADMINISTRATOR_UPDATE_ROLE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ADMINISTRATOR_USERS_DELETE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_USERS;
 
 @Controller
-@RequestMapping(URL_ADMIN)
+//@RequestMapping(URL_ADMIN)
 public class AdministratorController {
     private static final Logger logger = LogManager.getLogger(AdministratorController.class);
     private final UserService userService;
@@ -51,14 +52,6 @@ public class AdministratorController {
         this.roleService = roleService;
         this.reviewsService = reviewsService;
         this.userUtil = userUtil;
-    }
-
-    @GetMapping
-    public String getAdminPage(Model model) {
-        UserDTO user = userUtil.getActualUser();
-        String FullName = user.getFirstName()+" "+user.getLastName()+" "+user.getPatronymic();
-        model.addAttribute("FullName", FullName);
-        return PATH_ADMINISTRATOR_ADMIN;
     }
 
     @GetMapping(URL_USERS)

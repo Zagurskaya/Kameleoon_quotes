@@ -13,13 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import static com.gmail.zagurskaya.web.constant.RolesConstant.ADMIN;
-import static com.gmail.zagurskaya.web.constant.RolesConstant.CONTROLLER;
-import static com.gmail.zagurskaya.web.constant.RolesConstant.KASSIR;
+import static com.gmail.zagurskaya.web.constant.RolesConstant.USER;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_403;
-import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ADMIN;
-import static com.gmail.zagurskaya.web.constant.URLConstant.URL_CASH;
-import static com.gmail.zagurskaya.web.constant.URLConstant.URL_CONTROLLER;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_LOGIN;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
 
@@ -57,8 +52,9 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(URL_PROFILE)
 //                .antMatchers(URL_ADMIN)
-                .hasAuthority(ADMIN)
-                .antMatchers("/", "/allQuotes", "/top", "/graph", URL_403)
+//                .hasAuthority(ADMIN)
+                .hasAuthority(USER)
+                .antMatchers("/", "/quotes", "/top", "/graph", URL_403)
                 .permitAll()
                 .and()
                 .formLogin()

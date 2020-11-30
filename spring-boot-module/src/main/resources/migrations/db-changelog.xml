@@ -75,16 +75,10 @@
 
     <changeSet id="5" author="zagurskaya@gmail.com">
         <insert tableName="roles">
-            <column name="name" value="Administrator"/>
+            <column name="name" value="User"/>
         </insert>
         <insert tableName="roles">
-            <column name="name" value="Kassir"/>
-        </insert>
-        <insert tableName="roles">
-            <column name="name" value="Controller"/>
-        </insert>
-        <insert tableName="roles">
-            <column name="name" value="SecureRestApi"/>
+            <column name="name" value="Guest"/>
         </insert>
     </changeSet>
 
@@ -109,7 +103,7 @@
         <insert tableName="users">
             <column name="username" value="ivanova"/>
             <column name="password" value="$2a$10$7FdrlLO1NjHw4zyv2pEE7.oMRm575A0nIncaYMDrfYDaF0edfemhS"/>
-            <column name="role_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="false"/>
         </insert>
     </changeSet>
@@ -126,7 +120,7 @@
         <insert tableName="users">
             <column name="username" value="petrova"/>
             <column name="password" value="$2a$10$RVEcoflreqIm5icdhG0RvObN/10fYljJLnWZ2KEo.TsfAHDamD.Hi"/>
-            <column name="role_id" valueNumeric="3"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="false"/>
         </insert>
     </changeSet>
@@ -143,7 +137,7 @@
         <insert tableName="users">
             <column name="username" value="secure"/>
             <column name="password" value="$2a$12$GIezGEGQUOtwG58P.Ca4TeeH0SzFwqwkr78SlH3G8wi1jmKp3FfTm"/>
-            <column name="role_id" valueNumeric="4"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="false"/>
         </insert>
     </changeSet>
@@ -160,7 +154,7 @@
         <insert tableName="users">
             <column name="username" value="test1"/>
             <column name="password" value="2222"/>
-            <column name="role_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="false"/>
         </insert>
     </changeSet>
@@ -177,7 +171,7 @@
         <insert tableName="users">
             <column name="username" value="test2"/>
             <column name="password" value="3333"/>
-            <column name="role_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="false"/>
         </insert>
     </changeSet>
@@ -194,7 +188,7 @@
         <insert tableName="users">
             <column name="username" value="test3"/>
             <column name="password" value="4444"/>
-            <column name="role_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="true"/>
         </insert>
     </changeSet>
@@ -211,7 +205,7 @@
         <insert tableName="users">
             <column name="username" value="test4"/>
             <column name="password" value="5555"/>
-            <column name="role_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="false"/>
         </insert>
     </changeSet>
@@ -228,7 +222,7 @@
         <insert tableName="users">
             <column name="username" value="test5"/>
             <column name="password" value="666"/>
-            <column name="role_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
             <column name="isnotactive" valueBoolean="true"/>
         </insert>
     </changeSet>

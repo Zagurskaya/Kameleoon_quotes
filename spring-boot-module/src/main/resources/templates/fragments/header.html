@@ -7,49 +7,24 @@
               th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
 
         <link rel="stylesheet" th:href="@{/css/main.css}"
-              href="../../css/main.css" />
+              href="../../css/main.css"/>
     </div>
 </head>
 <body>
-<div th:fragment="header">-->
-  &lt;!&ndash; this is header &ndash;&gt;-->
-   <nav class="navbar navbar-inverse">-->
-       <div class="container">-->
-           <div class="navbar-header">-->
-               <a class="navbar-brand" th:href="@{/profile}">Profile</a>-->
-           </div>-->
-            <div class="navbar-header">-->
-               <a class="navbar-brand" th:href="@{/quotes}">All quotes</a>-->
-           </div>-->
-            <div class="navbar-header">-->
-               <a class="navbar-brand" th:href="@{/top}">Top 10</a>-->
-            </div>-->
-<!--            <div class="navbar-header">&ndash;&gt;-->
-<!--                <a class="navbar-brand" th:href="@{/graph}">Graph</a>&ndash;&gt;-->
-<!--            </div>&ndash;&gt;-->
-        </div>-->
-    </nav>-->
-</div>-->
-
-<!--<div th:fragment="header">-->
-<!--    &lt;!&ndash; this is header &ndash;&gt;-->
-<!--    <nav class="navbar navbar-inverse">-->
-<!--        <div class="container">-->
-<!--&lt;!&ndash;            <div class="navbar-header">&ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="navbar-brand" th:href="@{/}">Ноme</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--            <div class="navbar-header">-->
-<!--                <a class="navbar-brand" th:href="@{/cash}">CASH</a>-->
-<!--            </div>-->
-<!--            <div class="navbar-header">-->
-<!--                <a class="navbar-brand" th:href="@{/admin}">ADMINISTRATOR</a>-->
-<!--            </div>-->
-<!--            <div class="navbar-header">-->
-<!--                <a class="navbar-brand" th:href="@{/controller}">CONTROLLER</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--</div>-->
-
+<div th:fragment="header">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/profile}">Profile</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/quotes}">All quotes</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/top}">Top 10</a>
+            </div>
+        </div>
+    </nav>
+</div>
 </body>
 </html>

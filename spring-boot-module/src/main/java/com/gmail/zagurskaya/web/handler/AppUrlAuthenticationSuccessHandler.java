@@ -16,9 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collection;
 
-import static com.gmail.zagurskaya.web.constant.RolesConstant.ADMIN;
-import static com.gmail.zagurskaya.web.constant.RolesConstant.CONTROLLER;
-import static com.gmail.zagurskaya.web.constant.RolesConstant.KASSIR;
+import static com.gmail.zagurskaya.web.constant.RolesConstant.USER;
 
 public class AppUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -46,28 +44,16 @@ public class AppUrlAuthenticationSuccessHandler implements AuthenticationSuccess
     }
 
     private String determineTargetUrl(Authentication authentication) {
-        boolean isKassir = false;
-        boolean isController = false;
-        boolean isAdministrator = false;
+        boolean isUser = false;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority authority : authorities) {
-            if (authority.getAuthority().equals(KASSIR)) {
-                isKassir = true;
-                break;
-            } else if (authority.getAuthority().equals(CONTROLLER)) {
-                isController = true;
-                break;
-            } else if (authority.getAuthority().equals(ADMIN)) {
-                isAdministrator = true;
+            if (authority.getAuthority().equals(USER)) {
+                isUser = true;
                 break;
             }
         }
-        if (isKassir) {
-            return "/cash";
-        } else if (isController) {
-            return "/controller";
-        } else if (isAdministrator) {
-            return "/admin";
+        if (isUser) {
+            return "/profile";
         } else {
             throw new IllegalStateException();
         }
