@@ -1,5 +1,9 @@
 package com.gmail.zagurskaya.repository.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,12 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.sql.Date;
 
 @Entity
+@Getter
+@Setter
+@ToString
 @Table(name = "quotes")
 public class Quotes {
     @Id
@@ -29,46 +35,4 @@ public class Quotes {
 
     @Column(name = "description")
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "quotes{" +
-                "id=" + id +
-                ", date=" + date +
-                ", user=" + user +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

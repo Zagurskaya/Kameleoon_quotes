@@ -3,7 +3,7 @@
 //import com.gmail.zagurskaya.service.QuotesService;
 //import com.gmail.zagurskaya.service.RoleService;
 //import com.gmail.zagurskaya.service.UserService;
-//import com.gmail.zagurskaya.service.Util.UserUtil;
+//import com.gmail.zagurskaya.service.util.UserUtil;
 //import com.gmail.zagurskaya.service.model.QuotesDTO;
 //import com.gmail.zagurskaya.service.model.RoleDTO;
 //import com.gmail.zagurskaya.service.model.UserDTO;

@@ -1,7 +1,7 @@
 //package com.gmail.zagurskaya.web.controller;
 //
 //import com.gmail.zagurskaya.service.UserService;
-//import com.gmail.zagurskaya.service.Util.UserUtil;
+//import com.gmail.zagurskaya.service.util.UserUtil;
 //import com.gmail.zagurskaya.service.model.UserDTO;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;

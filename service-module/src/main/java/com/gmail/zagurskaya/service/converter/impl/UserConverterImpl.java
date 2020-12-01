@@ -1,25 +1,18 @@
 package com.gmail.zagurskaya.service.converter.impl;
 
-import com.gmail.zagurskaya.repository.RoleRepository;
 import com.gmail.zagurskaya.repository.UserRepository;
+import com.gmail.zagurskaya.repository.model.RoleEnum;
 import com.gmail.zagurskaya.repository.model.User;
-import com.gmail.zagurskaya.service.converter.RoleConverter;
 import com.gmail.zagurskaya.service.converter.UserConverter;
 import com.gmail.zagurskaya.service.model.UserDTO;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityNotFoundException;
-
 @Component
 public class UserConverterImpl implements UserConverter {
 
-    private final RoleConverter roleConverter;
-    private final RoleRepository roleRepository;
     private final UserRepository userRepository;
 
-    public UserConverterImpl(RoleConverter roleConverter, RoleRepository roleRepository, UserRepository userRepository) {
-        this.roleConverter = roleConverter;
-        this.roleRepository = roleRepository;
+    public UserConverterImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -31,8 +24,7 @@ public class UserConverterImpl implements UserConverter {
         userDTO.setPassword(user.getPassword());
         userDTO.setFirstName(user.getFirstName());
         userDTO.setLastName(user.getLastName());
-        userDTO.setRole(roleConverter.toDTO(user.getRole()));
-        userDTO.setRoleId(user.getRole().getId());
+        userDTO.setRole(user.getRole().name());
         return userDTO;
     }
 
@@ -44,8 +36,7 @@ public class UserConverterImpl implements UserConverter {
         user.setPassword(userDTO.getPassword());
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
-        user.setRole(roleRepository.findById(userDTO.getRoleId())
-                .orElseThrow(() -> new EntityNotFoundException("Role not found with id " + userDTO.getRoleId())));
+        user.setRole(RoleEnum.valueOf(userDTO.getRole()));
         return user;
     }
 }

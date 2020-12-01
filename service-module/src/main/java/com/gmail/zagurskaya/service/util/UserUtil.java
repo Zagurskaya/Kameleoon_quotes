@@ -1,4 +1,4 @@
-package com.gmail.zagurskaya.service.Util;
+package com.gmail.zagurskaya.service.util;
 
 import com.gmail.zagurskaya.service.UserService;
 import com.gmail.zagurskaya.service.model.UserDTO;
@@ -11,13 +11,12 @@ import org.springframework.stereotype.Service;
 public class UserUtil {
     private final UserService userService;
 
-@Autowired
+    @Autowired
     public UserUtil(UserService userService) {
         this.userService = userService;
     }
 
-
-    public UserDTO getActualUser(){
+    public UserDTO getActualUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
         UserDTO user = userService.loadUserByUsername(name);
