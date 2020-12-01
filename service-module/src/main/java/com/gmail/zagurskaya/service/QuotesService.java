@@ -8,9 +8,11 @@ public interface QuotesService {
 
     List<QuoteDTO> getQuotes();
 
-    void deleteQuotesList(List<Long> ids);
-
     QuoteDTO getQuoteById(Long id);
 
     void update(QuoteDTO quoteDTO);
+
+    void add(QuoteDTO quoteDTO);
+
+    void delete(Long id);
 }

@@ -10,6 +10,6 @@ import org.springframework.data.repository.query.Param;
 public interface QuotesRepository extends JpaRepository<Quotes, Long> {
 
     @Modifying
-    @Query("delete from Quotes q where q.id in :ids")
-    void deleteByQuoteIds(@Param("ids") Iterable<Long> ids);
+    @Query("delete from Quotes q where q.id = :id")
+    void deleteById(@Param("id") Long id);
 }

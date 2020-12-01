@@ -9,9 +9,9 @@
 
 <div class="container">
     <h1 th:text="${FullName}">Hello User!</h1>
-
-    <form action="/profile/quotes/delete" th:object="${quotes}" method="post">
-
+    <br>
+    <h3><a th:href="@{/profile/quotes/add}">Add new quote</a></h3>
+    <br>
         <table class="table table-bordered table-hover table-striped">
             <thead>
             <tr>
@@ -27,7 +27,12 @@
                 <td th:text="${quote.id}"></td>
                 <td th:text="${quote.date}"></td>
                 <td th:text="${quote.description}"></td>
-                <td><input type="checkbox" th:name="ids" th:value="${quote.id}"/></td>
+                <td>
+                    <form th:object="${quote}" method="post" action="/profile/quotes/delete">
+                        <input hidden value="#" th:attr="value=${quote.id}" th:name="id"/>
+                        <button class="btn btn-light btn-xs">Delete</button>
+                    </form>
+                </td>
                 <td>
                     <form th:object="${quote}" method="post" action="/profile/quotes/update">
                         <input hidden value="#" th:attr="value=${quote.id}" th:name="id"/>
@@ -37,10 +42,6 @@
             </tr>
             </tbody>
         </table>
-        <div class="field">
-            <button type="submit" value="submit" class="btn btn-success">Delete</button>
-        </div>
-    </form>
 </div>
 </div>
 

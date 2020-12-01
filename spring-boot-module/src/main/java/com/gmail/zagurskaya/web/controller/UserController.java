@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_NEW_QUOTE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_PROFILE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_PROFILE_POST;
 import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_QUOTE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_ADD;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_DELETE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_UPDATE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_UPDATE_ID;
@@ -53,10 +55,10 @@ public class UserController {
 
     @PostMapping(URL_PROFILE_DELETE)
     public String postDeleteQuotes(
-            @RequestParam("ids") List<Long> ids,
+            @RequestParam("id") Long id,
             Model model
     ) {
-        quotesService.deleteQuotesList(ids);
+        quotesService.delete(id);
         return PATH_PROFILE_POST;
     }
 
@@ -79,6 +81,20 @@ public class UserController {
         UserDTO user = userUtil.getActualUser();
         quoteDTO.setUser(user);
         quotesService.update(quoteDTO);
+        return PATH_PROFILE_POST;
+    }
+
+    @GetMapping(URL_PROFILE_ADD)
+    public String getAddNewQuote(Model model) {
+        return PATH_NEW_QUOTE;
+    }
+
+    @PostMapping(URL_PROFILE_ADD)
+    public String postAddNewQuote(@ModelAttribute(value = "quote") QuoteDTO quoteDTO,
+                                  Model model) {
+        UserDTO user = userUtil.getActualUser();
+        quoteDTO.setUser(user);
+        quotesService.add(quoteDTO);
         return PATH_PROFILE_POST;
     }
 }

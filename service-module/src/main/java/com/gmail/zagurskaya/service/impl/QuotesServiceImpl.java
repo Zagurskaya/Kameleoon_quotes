@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,8 +41,8 @@ public class QuotesServiceImpl implements QuotesService {
 
     @Override
     @Transactional
-    public void deleteQuotesList(List<Long> ids) {
-        quotesRepository.deleteByQuoteIds(ids);
+    public void delete(Long id) {
+        quotesRepository.deleteById(id);
     }
 
     @Override
@@ -57,6 +58,14 @@ public class QuotesServiceImpl implements QuotesService {
     @Transactional
     public void update(QuoteDTO quoteDTO) {
         Quotes quote = quotesConverter.toEntity(quoteDTO);
+        quotesRepository.save(quote);
+    }
+
+    @Override
+    @Transactional
+    public void add(QuoteDTO quoteDTO) {
+        Quotes quote = quotesConverter.toEntity(quoteDTO);
+        quote.setDate(LocalDate.now());
         quotesRepository.save(quote);
     }
 }
