@@ -4,18 +4,18 @@ import com.gmail.zagurskaya.repository.QuotesRepository;
 import com.gmail.zagurskaya.repository.model.Quotes;
 import com.gmail.zagurskaya.service.QuotesService;
 import com.gmail.zagurskaya.service.converter.QuotesConverter;
-import com.gmail.zagurskaya.service.model.QuotesDTO;
+import com.gmail.zagurskaya.service.model.QuoteDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class QuotesServiceImpl implements QuotesService {
     private static final Logger logger = LogManager.getLogger(QuotesServiceImpl.class);
 
@@ -30,26 +30,33 @@ public class QuotesServiceImpl implements QuotesService {
 
     @Override
     @Transactional
-    public List<QuotesDTO> getQuotes() {
+    public List<QuoteDTO> getQuotes() {
         List<Quotes> quotes = quotesRepository.findAll();
-        List<QuotesDTO> quotesDTO = quotes.stream()
+        List<QuoteDTO> quoteDTO = quotes.stream()
                 .map(quotesConverter::toDTO)
                 .collect(Collectors.toList());
-        return quotesDTO;
+        return quoteDTO;
     }
 
     @Override
     @Transactional
-    public void delete(Long id) {
-
-//        quotesRepository.delete(quotesRepository.findById(id));
+    public void deleteQuotesList(List<Long> ids) {
+        quotesRepository.deleteByQuoteIds(ids);
     }
 
     @Override
-    public void deleteQuotesList(List<Long> ids) {
-        ids.stream().forEach(id -> {
-            delete(id);
-            logger.info("deleted review with id = " + id);
-        });
+    @Transactional(readOnly = true)
+    public QuoteDTO getQuoteById(Long id) {
+        Quotes loaded = quotesRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Quote not found with id  " + id));
+        QuoteDTO quoteDTO = quotesConverter.toDTO(loaded);
+        return quoteDTO;
+
+    }
+
+    @Override
+    @Transactional
+    public void update(QuoteDTO quoteDTO) {
+        Quotes quote = quotesConverter.toEntity(quoteDTO);
+        quotesRepository.save(quote);
     }
 }

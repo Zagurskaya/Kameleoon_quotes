@@ -3,7 +3,7 @@ package com.gmail.zagurskaya.web.controller;
 import com.gmail.zagurskaya.service.QuotesService;
 import com.gmail.zagurskaya.service.UserService;
 import com.gmail.zagurskaya.service.util.UserUtil;
-import com.gmail.zagurskaya.service.model.QuotesDTO;
+import com.gmail.zagurskaya.service.model.QuoteDTO;
 import com.gmail.zagurskaya.service.model.UserDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +29,7 @@ public class GuestController {
 
     @GetMapping(URL_QUOTES)
     public String getQuotesInAdminPage(Model model) {
-        List<QuotesDTO> quotes = quotesService.getQuotes();
+        List<QuoteDTO> quotes = quotesService.getQuotes();
         List<UserDTO> users = userService.getUsers();
         model.addAttribute("users", users);
         model.addAttribute("quotes", quotes);

@@ -8,38 +8,42 @@
 <div th:replace="fragments/header :: header"/>
 
 <div class="container">
+    <h1 th:text="${FullName}">Hello User!</h1>
 
-    <H2>quotes</H2>
-    <form action="/admin/quotes/delete" th:object="${quotes}" method="post">
+    <form action="/profile/quotes/delete" th:object="${quotes}" method="post">
 
         <table class="table table-bordered table-hover table-striped">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Дата</th>
-                <th>Пользователь</th>
-                <th>Описание</th>
+                <th>Date</th>
+                <th>Description</th>
                 <th>Delete</th>
+                <th>Update</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="quote, stat : ${quotes}">
                 <td th:text="${quote.id}"></td>
                 <td th:text="${quote.date}"></td>
-                <td th:text="${quote.user.username}"></td>
                 <td th:text="${quote.description}"></td>
-
-                <td><input type="checkbox" th:name="ids"
-                           th:value="${quote.id}" /></td>
+                <td><input type="checkbox" th:name="ids" th:value="${quote.id}"/></td>
                 <td>
+                    <form th:object="${quote}" method="post" action="/profile/quotes/update">
+                        <input hidden value="#" th:attr="value=${quote.id}" th:name="id"/>
+                        <button class="btn btn-light btn-xs">Update</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
         <div class="field">
-            <button type="submit" value="submit" class="btn btn-success">Delete quotes</button>
+            <button type="submit" value="submit" class="btn btn-success">Delete</button>
         </div>
     </form>
 </div>
+</div>
+
 <div th:replace="fragments/footer :: footer"/>
 
 </body>

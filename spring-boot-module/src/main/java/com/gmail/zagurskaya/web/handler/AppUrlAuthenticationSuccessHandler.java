@@ -53,7 +53,7 @@ public class AppUrlAuthenticationSuccessHandler implements AuthenticationSuccess
             }
         }
         if (isUser) {
-            return "/profile";
+            return "/profile/quotes";
         } else {
             throw new IllegalStateException();
         }

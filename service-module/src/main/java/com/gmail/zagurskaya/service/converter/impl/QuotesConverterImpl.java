@@ -4,7 +4,7 @@ import com.gmail.zagurskaya.repository.UserRepository;
 import com.gmail.zagurskaya.repository.model.Quotes;
 import com.gmail.zagurskaya.service.converter.QuotesConverter;
 import com.gmail.zagurskaya.service.converter.UserConverter;
-import com.gmail.zagurskaya.service.model.QuotesDTO;
+import com.gmail.zagurskaya.service.model.QuoteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,23 +23,23 @@ public class QuotesConverterImpl implements QuotesConverter {
     }
 
     @Override
-    public QuotesDTO toDTO(Quotes quotes) {
-        QuotesDTO quotesDTO = new QuotesDTO();
-        quotesDTO.setId(quotes.getId());
-        quotesDTO.setDate(quotes.getDate());
-        quotesDTO.setUser(userConverter.toDTO(quotes.getUser()));
-        quotesDTO.setDescription(quotes.getDescription());
-        return quotesDTO;
+    public QuoteDTO toDTO(Quotes quotes) {
+        QuoteDTO quoteDTO = new QuoteDTO();
+        quoteDTO.setId(quotes.getId());
+        quoteDTO.setDate(quotes.getDate());
+        quoteDTO.setUser(userConverter.toDTO(quotes.getUser()));
+        quoteDTO.setDescription(quotes.getDescription());
+        return quoteDTO;
     }
 
     @Override
-    public Quotes toEntity(QuotesDTO quotesDTO) {
+    public Quotes toEntity(QuoteDTO quoteDTO) {
         Quotes quotes = new Quotes();
-        quotes.setId(quotesDTO.getId());
-        quotes.setDate(quotesDTO.getDate());
-        quotes.setUser(userRepository.findById(quotesDTO.getUser().getId())
-                .orElseThrow(() -> new EntityNotFoundException("Role not found with id " + quotesDTO.getUser().getId())));
-        quotes.setDescription(quotesDTO.getDescription());
+        quotes.setId(quoteDTO.getId());
+        quotes.setDate(quoteDTO.getDate());
+        quotes.setUser(userRepository.findById(quoteDTO.getUser().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Role not found with id " + quoteDTO.getUser().getId())));
+        quotes.setDescription(quoteDTO.getDescription());
         return quotes;
     }
 }

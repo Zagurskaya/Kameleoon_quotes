@@ -1,11 +1,11 @@
 package com.gmail.zagurskaya.service.converter;
 
 import com.gmail.zagurskaya.repository.model.Quotes;
-import com.gmail.zagurskaya.service.model.QuotesDTO;
+import com.gmail.zagurskaya.service.model.QuoteDTO;
 
 public interface QuotesConverter {
 
-    QuotesDTO toDTO(Quotes quotes);
+    QuoteDTO toDTO(Quotes quotes);
 
-    Quotes toEntity(QuotesDTO quotesDTO);
+    Quotes toEntity(QuoteDTO quoteDTO);
 }

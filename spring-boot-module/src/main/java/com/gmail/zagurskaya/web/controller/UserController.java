@@ -1,33 +1,84 @@
 package com.gmail.zagurskaya.web.controller;
 
+import com.gmail.zagurskaya.service.QuotesService;
 import com.gmail.zagurskaya.service.UserService;
-import com.gmail.zagurskaya.service.util.UserUtil;
+import com.gmail.zagurskaya.service.model.QuoteDTO;
 import com.gmail.zagurskaya.service.model.UserDTO;
+import com.gmail.zagurskaya.service.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
+import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_PROFILE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_PROFILE_POST;
+import static com.gmail.zagurskaya.web.constant.URLConstant.PATH_QUOTE;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_DELETE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_UPDATE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_UPDATE_ID;
 
 @Controller
+@RequestMapping(URL_PROFILE)
 public class UserController {
 
     private final UserService userService;
+    private final QuotesService quotesService;
     private final UserUtil userUtil;
 
 
     @Autowired
-    public UserController(UserService userService, UserUtil userUtil) {
+    public UserController(UserService userService, QuotesService quotesService, UserUtil userUtil) {
         this.userService = userService;
+        this.quotesService = quotesService;
         this.userUtil = userUtil;
     }
 
-    @GetMapping(URL_PROFILE)
-    public String getAdminPage(Model model) {
+    @GetMapping()
+    public String getUserPage(Model model) {
+        List<QuoteDTO> quoteDTOS = quotesService.getQuotes();
         UserDTO user = userUtil.getActualUser();
         String FullName = user.getFirstName() + " " + user.getLastName();
         model.addAttribute("FullName", FullName);
-        return URL_PROFILE;
+        model.addAttribute("quotes", quoteDTOS);
+        return PATH_PROFILE;
+    }
+
+    @PostMapping(URL_PROFILE_DELETE)
+    public String postDeleteQuotes(
+            @RequestParam("ids") List<Long> ids,
+            Model model
+    ) {
+        quotesService.deleteQuotesList(ids);
+        return PATH_PROFILE_POST;
+    }
+
+    @PostMapping(URL_PROFILE_UPDATE)
+    public String postUpdateQuote(@RequestParam("id") Long quoteId, Model model) {
+        return PATH_PROFILE_POST + "/" + quoteId;
+    }
+
+    @GetMapping(URL_PROFILE_UPDATE_ID)
+    public String getUpdateQuote(@PathVariable("id") Long quoteId, Model model) {
+        QuoteDTO quoteDTOS = quotesService.getQuoteById(quoteId);
+        model.addAttribute("quote", quoteDTOS);
+        return PATH_QUOTE;
+    }
+
+    @PostMapping(URL_PROFILE_UPDATE_ID)
+    public String postUpdateQuote(@RequestParam("id") Long quoteId,
+                                  @ModelAttribute(value = "quote") QuoteDTO quoteDTO,
+                                  Model model) {
+        UserDTO user = userUtil.getActualUser();
+        quoteDTO.setUser(user);
+        quotesService.update(quoteDTO);
+        return PATH_PROFILE_POST;
     }
 }

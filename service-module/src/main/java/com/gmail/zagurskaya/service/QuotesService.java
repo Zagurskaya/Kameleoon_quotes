@@ -1,14 +1,16 @@
 package com.gmail.zagurskaya.service;
 
-import com.gmail.zagurskaya.service.model.QuotesDTO;
+import com.gmail.zagurskaya.service.model.QuoteDTO;
 
 import java.util.List;
 
 public interface QuotesService {
 
-    List<QuotesDTO> getQuotes();
-
-    void delete(Long id);
+    List<QuoteDTO> getQuotes();
 
     void deleteQuotesList(List<Long> ids);
+
+    QuoteDTO getQuoteById(Long id);
+
+    void update(QuoteDTO quoteDTO);
 }
