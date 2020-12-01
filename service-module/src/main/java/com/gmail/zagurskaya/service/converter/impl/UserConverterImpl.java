@@ -8,6 +8,8 @@ import com.gmail.zagurskaya.service.converter.UserConverter;
 import com.gmail.zagurskaya.service.model.UserDTO;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityNotFoundException;
+
 @Component
 public class UserConverterImpl implements UserConverter {
 
@@ -42,7 +44,8 @@ public class UserConverterImpl implements UserConverter {
         user.setPassword(userDTO.getPassword());
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
-        user.setRole(roleRepository.findById(userDTO.getRoleId()));
+        user.setRole(roleRepository.findById(userDTO.getRoleId())
+                .orElseThrow(() -> new EntityNotFoundException("Role not found with id " + userDTO.getRoleId())));
         return user;
     }
 }

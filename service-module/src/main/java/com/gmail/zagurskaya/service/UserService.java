@@ -8,23 +8,23 @@ public interface UserService {
 
     List<UserDTO> getUsers();
 
-    void add(UserDTO user);
+//    void add(UserDTO user);
 
     void delete(Long id);
 
-    void update(UserDTO user);
-
-    void updatePassword(UserDTO user);
+//    void update(UserDTO user);
+//
+//    void updatePassword(UserDTO user);
 
     UserDTO loadUserByUsername(String name);
 
-    List<UserDTO> getActionUsersSortedByUserName();
-
-    UserDTO getUserById(Long id);
-
-    String returnPasswordSameAsLogin(UserDTO userDTO);
-
-    UserDTO updateUserRole(Long userId, Long roleId);
-
-    void deleteUsersList(List<Long> ids);
+//    List<UserDTO> getActionUsersSortedByUserName();
+//
+//    UserDTO getUserById(Long id);
+//
+//    String returnPasswordSameAsLogin(UserDTO userDTO);
+//
+//    UserDTO updateUserRole(Long userId, Long roleId);
+//
+//    void deleteUsersList(List<Long> ids);
 }

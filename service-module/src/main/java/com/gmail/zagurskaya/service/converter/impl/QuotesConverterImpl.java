@@ -8,6 +8,8 @@ import com.gmail.zagurskaya.service.model.QuotesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityNotFoundException;
+
 @Component
 public class QuotesConverterImpl implements QuotesConverter {
 
@@ -35,7 +37,8 @@ public class QuotesConverterImpl implements QuotesConverter {
         Quotes quotes = new Quotes();
         quotes.setId(quotesDTO.getId());
         quotes.setDate(quotesDTO.getDate());
-        quotes.setUser(userRepository.findById(quotesDTO.getUser().getId()));
+        quotes.setUser(userRepository.findById(quotesDTO.getUser().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Role not found with id " + quotesDTO.getUser().getId())));
         quotes.setDescription(quotesDTO.getDescription());
         return quotes;
     }

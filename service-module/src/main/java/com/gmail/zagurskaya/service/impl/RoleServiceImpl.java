@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional
     public List<RoleDTO> getRoles() {
-        List<Role> roles = roleRepository.findAll(0, Integer.MAX_VALUE);
+        List<Role> roles = roleRepository.findAll();
         List<RoleDTO> rolesDTO = roles.stream()
                 .map(roleConverter::toDTO)
                 .collect(Collectors.toList());
@@ -42,7 +43,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional
     public RoleDTO getRole(Long id) {
-        Role role = (Role) roleRepository.findById(id);
+        Role role = roleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Role not found with id " + id));
         RoleDTO roleDTO = roleConverter.toDTO(role);
         return roleDTO;
     }

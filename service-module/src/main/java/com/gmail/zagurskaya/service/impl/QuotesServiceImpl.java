@@ -31,7 +31,7 @@ public class QuotesServiceImpl implements QuotesService {
     @Override
     @Transactional
     public List<QuotesDTO> getQuotes() {
-        List<Quotes> quotes = quotesRepository.findAll(0, Integer.MAX_VALUE);
+        List<Quotes> quotes = quotesRepository.findAll();
         List<QuotesDTO> quotesDTO = quotes.stream()
                 .map(quotesConverter::toDTO)
                 .collect(Collectors.toList());
@@ -42,7 +42,7 @@ public class QuotesServiceImpl implements QuotesService {
     @Transactional
     public void delete(Long id) {
 
-        quotesRepository.remove(quotesRepository.findById(id));
+//        quotesRepository.delete(quotesRepository.findById(id));
     }
 
     @Override
