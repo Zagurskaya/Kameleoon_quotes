@@ -1,34 +1,24 @@
 package com.gmail.zagurskaya.service.model;
 
-import com.gmail.zagurskaya.repository.model.UserInfo;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UserDTO {
 
-//    @NotNull
     private Long id;
     @NotNull
     @Size(max = 50)
     private String username;
-//    @NotNull
-//    @Size(max = 100)
+
     private String password;
     @NotNull
     private String lastName;
     @NotNull
     private String firstName;
-    @NotNull
-    private String patronymic;
 
     private RoleDTO role;
     @NotNull
     private Long roleId;
-//    @NotNull
-    private UserInfo userInfo;
-//    @NotNull
-    private Boolean isNotActive;
 
 
 
@@ -72,36 +62,12 @@ public class UserDTO {
         this.firstName = firstName;
     }
 
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
     public RoleDTO getRole() {
         return role;
     }
 
     public void setRole(RoleDTO role) {
         this.role = role;
-    }
-
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-    }
-
-    public Boolean getIsNotActive() {
-        return isNotActive;
-    }
-
-    public void setIsNotActive(Boolean notActive) {
-        isNotActive = notActive;
     }
 
     public Long getRoleId() {
@@ -118,8 +84,10 @@ public class UserDTO {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", role=" + role +
-                ", isNotActive=" + isNotActive +
+                ", roleId=" + roleId +
                 '}';
     }
 }

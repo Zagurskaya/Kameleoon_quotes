@@ -16,8 +16,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-//@SQLDelete(sql = "UPDATE users SET isnotactive = 1 WHERE id=?")
-@Where(clause = "isnotactive = 0")
 public class User {
 
     @Id
@@ -28,24 +26,18 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "lastname")
+    private String lastName;
+
+    @Column(name = "firstname")
+    private String firstName;
+
     @Column(name = "password")
     private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
-
-    @OneToOne(
-            fetch = FetchType.LAZY,
-            mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private UserInfo userInfo;
-
-
-    @Column(name = "isnotactive")
-    private Boolean isNotActive;
 
     public Long getId() {
         return id;
@@ -79,20 +71,20 @@ public class User {
         this.role = role;
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Boolean getIsNotActive() {
-        return isNotActive;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setIsNotActive(Boolean notActive) {
-        isNotActive = notActive;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Override
@@ -100,10 +92,10 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", userInfo=" + userInfo +
-                ", isNotActive=" + isNotActive +
                 '}';
     }
 }

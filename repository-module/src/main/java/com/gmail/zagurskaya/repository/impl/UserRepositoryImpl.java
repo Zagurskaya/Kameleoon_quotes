@@ -19,7 +19,8 @@ public class UserRepositoryImpl extends GenericRepositoryImpl<Long, User> implem
 
     @Override
     public List<User> getActionUsersSortedByUserName() {
-        String query = "SELECT u FROM User u WHERE u.isNotActive = false ORDER BY u.username";
+//        String query = "SELECT u FROM User u WHERE u.isNotActive = false ORDER BY u.username";
+        String query = "SELECT u FROM User u ORDER BY u.username";
         Query q = entityManager.createQuery(query);
         return q.getResultList();
     }

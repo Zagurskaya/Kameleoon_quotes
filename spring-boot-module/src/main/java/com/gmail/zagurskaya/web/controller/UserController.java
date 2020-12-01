@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping(URL_PROFILE)
     public String getAdminPage(Model model) {
         UserDTO user = userUtil.getActualUser();
-        String FullName = user.getFirstName() + " " + user.getLastName() + " " + user.getPatronymic();
+        String FullName = user.getFirstName() + " " + user.getLastName();
         model.addAttribute("FullName", FullName);
         return URL_PROFILE;
     }

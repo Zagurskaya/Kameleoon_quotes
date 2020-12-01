@@ -31,11 +31,11 @@ public class QuotesServiceImpl implements QuotesService {
     @Override
     @Transactional
     public List<QuotesDTO> getQuotes() {
-        List<Quotes> quotess = quotesRepository.findAll(0, Integer.MAX_VALUE);
-        List<QuotesDTO> quotessDTO = quotess.stream()
+        List<Quotes> quotes = quotesRepository.findAll(0, Integer.MAX_VALUE);
+        List<QuotesDTO> quotesDTO = quotes.stream()
                 .map(quotesConverter::toDTO)
                 .collect(Collectors.toList());
-        return quotessDTO;
+        return quotesDTO;
     }
 
     @Override

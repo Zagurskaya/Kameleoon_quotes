@@ -27,28 +27,14 @@
             <column name="password" type="varchar(72)">
                 <constraints nullable="false"/>
             </column>
+            <column name="lastname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
             <column name="role_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_user_role" references="roles(id)"/>
-            </column>
-            <column name="isnotactive" type="boolean" defaultValueBoolean="false">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="3" author="zagurskaya@gmail.com">
-        <createTable tableName="userinfo">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="lastname" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="firstname" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="patronymic" type="varchar(40)">
-                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
@@ -67,9 +53,6 @@
             <column name="description" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="isnotopen" type="boolean" defaultValueBoolean="false">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
     </changeSet>
 
@@ -86,16 +69,9 @@
         <insert tableName="users">
             <column name="username" value="admin"/>
             <column name="password" value="$2a$12$zOaadmWpahyYjytjhOzZ3eKAcl3MJAc8CPR/9D76vw.d/vIuCk8u2"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="7" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Adminov"/>
             <column name="firstname" value="Admin"/>
-            <column name="patronymic" value="Adminovish"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -103,50 +79,29 @@
         <insert tableName="users">
             <column name="username" value="ivanova"/>
             <column name="password" value="$2a$10$7FdrlLO1NjHw4zyv2pEE7.oMRm575A0nIncaYMDrfYDaF0edfemhS"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="9" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Ivanova"/>
             <column name="firstname" value="Mariya"/>
-            <column name="patronymic" value="Ivanovna"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
     <changeSet id="10" author="zagurskaya@gmail.com">
         <insert tableName="users">
             <column name="username" value="petrova"/>
-            <column name="password" value="$2a$10$RVEcoflreqIm5icdhG0RvObN/10fYljJLnWZ2KEo.TsfAHDamD.Hi"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="11" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Petrova"/>
             <column name="firstname" value="Svetlana"/>
-            <column name="patronymic" value="Petrova"/>
+            <column name="password" value="$2a$10$RVEcoflreqIm5icdhG0RvObN/10fYljJLnWZ2KEo.TsfAHDamD.Hi"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
     <changeSet id="12" author="zagurskaya@gmail.com">
         <insert tableName="users">
             <column name="username" value="secure"/>
-            <column name="password" value="$2a$12$GIezGEGQUOtwG58P.Ca4TeeH0SzFwqwkr78SlH3G8wi1jmKp3FfTm"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="13" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Sidorov"/>
             <column name="firstname" value="Sidor"/>
-            <column name="patronymic" value="Sidorovish"/>
+            <column name="password" value="$2a$12$GIezGEGQUOtwG58P.Ca4TeeH0SzFwqwkr78SlH3G8wi1jmKp3FfTm"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -154,16 +109,9 @@
         <insert tableName="users">
             <column name="username" value="test1"/>
             <column name="password" value="2222"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="15" author="zagurskaya@gmail.com">
-        <insert tableName="userInfo">
             <column name="lastname" value="Testov1"/>
             <column name="firstname" value="Test1"/>
-            <column name="patronymic" value="Testovish1"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -171,16 +119,9 @@
         <insert tableName="users">
             <column name="username" value="test2"/>
             <column name="password" value="3333"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="17" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Testov2"/>
             <column name="firstname" value="Test2"/>
-            <column name="patronymic" value="Testovish2"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -188,16 +129,9 @@
         <insert tableName="users">
             <column name="username" value="test3"/>
             <column name="password" value="4444"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="true"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="19" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Testov3"/>
             <column name="firstname" value="Test13"/>
-            <column name="patronymic" value="Testovish3"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -205,16 +139,9 @@
         <insert tableName="users">
             <column name="username" value="test4"/>
             <column name="password" value="5555"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="false"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="21" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Testov4"/>
             <column name="firstname" value="Test4"/>
-            <column name="patronymic" value="Testovish4"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -222,16 +149,9 @@
         <insert tableName="users">
             <column name="username" value="test5"/>
             <column name="password" value="666"/>
-            <column name="role_id" valueNumeric="1"/>
-            <column name="isnotactive" valueBoolean="true"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="23" author="zagurskaya@gmail.com">
-        <insert tableName="userinfo">
             <column name="lastname" value="Testov5"/>
             <column name="firstname" value="Test5"/>
-            <column name="patronymic" value="Testovish5"/>
+            <column name="role_id" valueNumeric="1"/>
         </insert>
     </changeSet>
 
@@ -240,7 +160,6 @@
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
             <column name="description" value="new rateKB $ 2.51"/>
-            <column name="isnotopen" valueBoolean="false"/>
         </insert>
     </changeSet>
 
@@ -249,7 +168,6 @@
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
             <column name="description" value="new rateKB $ 2.51"/>
-            <column name="isnotopen" valueBoolean="false"/>
         </insert>
     </changeSet>
 
@@ -258,16 +176,14 @@
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="3"/>
             <column name="description" value="new rateKB $ 2.52"/>
-            <column name="isnotopen" valueBoolean="false"/>
         </insert>
-
     </changeSet>
+
     <changeSet id="27" author="zagurskaya@gmail.com">
         <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
             <column name="description" value="new rateKB $ 2.53"/>
-            <column name="isnotopen" valueBoolean="false"/>
         </insert>
     </changeSet>
 

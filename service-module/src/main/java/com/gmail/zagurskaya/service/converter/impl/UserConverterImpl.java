@@ -3,7 +3,6 @@ package com.gmail.zagurskaya.service.converter.impl;
 import com.gmail.zagurskaya.repository.RoleRepository;
 import com.gmail.zagurskaya.repository.UserRepository;
 import com.gmail.zagurskaya.repository.model.User;
-import com.gmail.zagurskaya.repository.model.UserInfo;
 import com.gmail.zagurskaya.service.converter.RoleConverter;
 import com.gmail.zagurskaya.service.converter.UserConverter;
 import com.gmail.zagurskaya.service.model.UserDTO;
@@ -28,15 +27,10 @@ public class UserConverterImpl implements UserConverter {
         userDTO.setId(user.getId());
         userDTO.setUsername(user.getUsername());
         userDTO.setPassword(user.getPassword());
+        userDTO.setFirstName(user.getFirstName());
+        userDTO.setLastName(user.getLastName());
         userDTO.setRole(roleConverter.toDTO(user.getRole()));
         userDTO.setRoleId(user.getRole().getId());
-        if (user.getUserInfo() != null) {
-            userDTO.setLastName(user.getUserInfo().getLastName());
-            userDTO.setFirstName(user.getUserInfo().getFirstName());
-            userDTO.setPatronymic(user.getUserInfo().getPatronymic());
-        }
-        userDTO.setIsNotActive(user.getIsNotActive());
-
         return userDTO;
     }
 
@@ -46,16 +40,9 @@ public class UserConverterImpl implements UserConverter {
         user.setId(userDTO.getId());
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
         user.setRole(roleRepository.findById(userDTO.getRoleId()));
-
-        UserInfo userInfo = new UserInfo();
-        userInfo.setFirstName(userDTO.getFirstName());
-        userInfo.setLastName(userDTO.getLastName());
-        userInfo.setPatronymic(userDTO.getPatronymic());
-        user.setUserInfo(userInfo);
-        userInfo.setUser(user);
-
-        user.setIsNotActive(userDTO.getIsNotActive());
         return user;
     }
 }
