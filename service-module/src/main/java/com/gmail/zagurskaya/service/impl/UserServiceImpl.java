@@ -1,6 +1,7 @@
 package com.gmail.zagurskaya.service.impl;
 
 import com.gmail.zagurskaya.repository.UserRepository;
+import com.gmail.zagurskaya.repository.model.RoleEnum;
 import com.gmail.zagurskaya.repository.model.User;
 import com.gmail.zagurskaya.service.UserService;
 import com.gmail.zagurskaya.service.converter.UserConverter;
@@ -43,14 +44,14 @@ public class UserServiceImpl implements UserService {
         return dtos;
     }
 
-//    @Override
-//    @Transactional
-//    public void add(UserDTO userDTO) {
-//        User user = userConverter.toEntity(userDTO);
-//        String password = randomPasswordWithEncoder(6);
-//        user.setPassword(password);
-//        userRepository.save(user);
-//    }
+    @Override
+    @Transactional
+    public void add(UserDTO userDTO) {
+        userDTO.setRole(RoleEnum.USER.name());
+        userDTO.setPassword(encoder(userDTO.getPassword()));
+        User user = userConverter.toEntity(userDTO);
+        userRepository.save(user);
+    }
 
 //    @Override
 //    @Transactional
@@ -90,7 +91,11 @@ public class UserServiceImpl implements UserService {
         UserDTO userDTO = userConverter.toDTO(loaded);
         return userDTO;
     }
-
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
 //    @Override
 //    @Transactional
 //    public List<UserDTO> getActionUsersSortedByUserName() {

@@ -15,8 +15,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import static com.gmail.zagurskaya.web.constant.RolesConstant.USER;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_403;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_ACCOUNT;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_LOGIN;
 import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_QUOTES;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_TOP;
 
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -52,7 +55,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(URL_PROFILE)
                 .hasAuthority(USER)
-                .antMatchers("/", "/quotes", "/top", "/graph", URL_403)
+                .antMatchers("/", URL_QUOTES, URL_TOP, "/graph", URL_ACCOUNT, URL_403)
                 .permitAll()
                 .and()
                 .formLogin()

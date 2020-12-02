@@ -4,7 +4,8 @@ public class URLConstant {
 
     public static final String URL_403 = "/403";
     public static final String URL_LOGIN = "/login";
-    public static final String URL_REST_API = "/api/**";
+    public static final String URL_ACCOUNT = "/account";
+    public static final String URL_TOP = "/top";
 
     public static final String URL_PROFILE = "/profile/quotes";
     public static final String URL_PROFILE_DELETE = "/delete";
@@ -19,9 +20,11 @@ public class URLConstant {
     public static final String PATH_QUOTE = "/user/quote";
     public static final String PATH_NEW_QUOTE = "/user/new_quote";
     public static final String PATH_PROFILE_POST = "redirect:/profile/quotes";
-//    public static final String PATH_PROFILE_POST_NEW_QUOTE = "redirect:/profile/quotes/add";
 
     public static final String PATH_QUOTES = "/guest/quotes";
+
+    public static final String PATH_ACCOUNT = "/new_user";
+
 
 
     private URLConstant() {

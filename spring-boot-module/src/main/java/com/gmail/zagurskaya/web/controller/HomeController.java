@@ -24,14 +24,14 @@ public class HomeController {
         return "/";
     }
 
-    @GetMapping("/about")
-    public String getAboutPage() {
-
-        return "about";
-    }
-    @GetMapping("/403")
-    public String get403Page() {
-
-        return "403";
-    }
+//    @GetMapping("/about")
+//    public String getAboutPage() {
+//
+//        return "about";
+//    }
+//    @GetMapping("/403")
+//    public String get403Page() {
+//
+//        return "403";
+//    }
 }

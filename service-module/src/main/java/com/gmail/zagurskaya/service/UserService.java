@@ -8,15 +8,13 @@ public interface UserService {
 
     List<UserDTO> getUsers();
 
-//    void add(UserDTO user);
+    void add(UserDTO user);
 
     void delete(Long id);
 
-//    void update(UserDTO user);
-//
-//    void updatePassword(UserDTO user);
-
     UserDTO loadUserByUsername(String name);
+
+    boolean existsByUsername(String username);
 
 //    List<UserDTO> getActionUsersSortedByUserName();
 //
