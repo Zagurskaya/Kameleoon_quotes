@@ -17,4 +17,7 @@ public interface QuoteService {
     void delete(Long id);
 
     List<QuoteDTO> getQuotesByUserId(Long userId);
+
+    List<QuoteDTO> findTopQuotes(int topLimit);
+
 }

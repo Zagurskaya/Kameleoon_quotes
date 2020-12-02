@@ -77,4 +77,12 @@ public class QuoteServiceImpl implements QuoteService {
                 .map(quoteConverter::toDTO)
                 .collect(Collectors.toList());
     }
+    @Override
+    @Transactional(readOnly = true)
+    public List<QuoteDTO> findTopQuotes(int topLimit) {
+        List<Quote> quoteList = quoteRepository.TopQuotes(topLimit);
+        return quoteList.stream()
+                .map(quoteConverter::toDTO)
+                .collect(Collectors.toList());
+    }
 }
