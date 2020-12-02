@@ -31,20 +31,21 @@ ____
 		
 ____
 ### Assembly and start-up instructions
-  * **Description (Linux)**   
+  * **Description **   
   
       * **Minimum requirements**  
         * openjdk-8-jdk
+        * maven
 
       * **Assembly and start-up instructions** 
-        * Making a copy of the project repository
+        * Making a copy of the project repository\
           git clone https://github.com/Zagurskaya/Kameleoon_quotes.git
           
-		* Building a project from the project root
+		* Building a project from the project root\
 		  mvn clean install
 		   
-		* Starting application from telegram-bot\spring-boot-module\
+		* Starting application from Kameleoon_quotes\spring-boot-module\
 		  mvn spring-boot:run
 		  
-		* Project URL
+		* Project URL\
     	  localhost:8080/
