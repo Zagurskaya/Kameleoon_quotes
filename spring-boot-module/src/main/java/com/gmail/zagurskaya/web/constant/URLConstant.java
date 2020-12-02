@@ -27,9 +27,6 @@ public class URLConstant {
     public static final String PATH_ACCOUNT = "/new_user";
     public static final String PATH_TOP = "/guest/top";
 
-
-
-
     private URLConstant() {
     }
 }

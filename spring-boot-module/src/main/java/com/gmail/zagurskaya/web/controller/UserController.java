@@ -1,7 +1,6 @@
 package com.gmail.zagurskaya.web.controller;
 
 import com.gmail.zagurskaya.service.QuoteService;
-import com.gmail.zagurskaya.service.UserService;
 import com.gmail.zagurskaya.service.model.QuoteDTO;
 import com.gmail.zagurskaya.service.model.UserDTO;
 import com.gmail.zagurskaya.service.util.UserUtil;
@@ -31,14 +30,12 @@ import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_UPDATE_I
 @RequestMapping(URL_PROFILE)
 public class UserController {
 
-    private final UserService userService;
     private final QuoteService quoteService;
     private final UserUtil userUtil;
 
 
     @Autowired
-    public UserController(UserService userService, QuoteService quoteService, UserUtil userUtil) {
-        this.userService = userService;
+    public UserController(QuoteService quoteService, UserUtil userUtil) {
         this.quoteService = quoteService;
         this.userUtil = userUtil;
     }

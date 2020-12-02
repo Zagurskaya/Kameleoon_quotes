@@ -33,16 +33,6 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     @Transactional
-    public List<StatisticDTO> findAllByQuoteId(Long quoteId) {
-        List<Statistic> statistics = statisticRepository.findAllByQuoteId(quoteId);
-        List<StatisticDTO> dtos = statistics.stream()
-                .map(statisticConverter::toDTO)
-                .collect(Collectors.toList());
-        return dtos;
-    }
-
-    @Override
-    @Transactional
     public void addStatisticByQuoteId(int mark, Long quoteId) {
         Quote quote = quoteRepository.findById(quoteId)
                 .orElseThrow(() -> new EntityNotFoundException("Quote not found with id " + quoteId));

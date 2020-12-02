@@ -5,8 +5,6 @@ import com.gmail.zagurskaya.repository.model.Quote;
 import com.gmail.zagurskaya.service.QuoteService;
 import com.gmail.zagurskaya.service.converter.QuoteConverter;
 import com.gmail.zagurskaya.service.model.QuoteDTO;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +16,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class QuoteServiceImpl implements QuoteService {
-    private static final Logger logger = LogManager.getLogger(QuoteServiceImpl.class);
-
     private final QuoteConverter quoteConverter;
     private final QuoteRepository quoteRepository;
 

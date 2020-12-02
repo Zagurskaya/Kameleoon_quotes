@@ -18,20 +18,16 @@ public class HomeController {
 
         return "login";
     }
+
     @GetMapping("/login?logout")
     public String getLogOutPage() {
-		
+
         return "/";
     }
 
-//    @GetMapping("/about")
-//    public String getAboutPage() {
-//
-//        return "about";
-//    }
-//    @GetMapping("/403")
-//    public String get403Page() {
-//
-//        return "403";
-//    }
+    @GetMapping("/403")
+    public String get403Page() {
+
+        return "403";
+    }
 }

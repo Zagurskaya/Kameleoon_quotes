@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 import static com.gmail.zagurskaya.web.constant.RolesConstant.USER;
+import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE;
 
 public class AppUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -53,7 +54,7 @@ public class AppUrlAuthenticationSuccessHandler implements AuthenticationSuccess
             }
         }
         if (isUser) {
-            return "/profile/quotes";
+            return URL_PROFILE;
         } else {
             throw new IllegalStateException();
         }

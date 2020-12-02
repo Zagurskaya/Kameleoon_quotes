@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="2" author="zagurskaya@gmail.com">
+    <changeSet id="1" author="zagurskaya@gmail.com">
         <createTable tableName="users">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -28,7 +28,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="4" author="zagurskaya@gmail.com">
+    <changeSet id="2" author="zagurskaya@gmail.com">
         <createTable tableName="quotes">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -45,7 +45,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="5" author="zagurskaya@gmail.com">
+    <changeSet id="3" author="zagurskaya@gmail.com">
         <createTable tableName="statistics">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -59,7 +59,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="6" author="zagurskaya@gmail.com">
+    <changeSet id="4" author="zagurskaya@gmail.com">
         <insert tableName="users">
             <column name="username" value="admin"/>
             <column name="password" value="$2a$12$zOaadmWpahyYjytjhOzZ3eKAcl3MJAc8CPR/9D76vw.d/vIuCk8u2"/>
@@ -69,7 +69,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="8" author="zagurskaya@gmail.com">
+    <changeSet id="5" author="zagurskaya@gmail.com">
         <insert tableName="users">
             <column name="username" value="ivanova"/>
             <column name="password" value="$2a$10$7FdrlLO1NjHw4zyv2pEE7.oMRm575A0nIncaYMDrfYDaF0edfemhS"/>
@@ -79,7 +79,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="10" author="zagurskaya@gmail.com">
+    <changeSet id="6" author="zagurskaya@gmail.com">
         <insert tableName="users">
             <column name="username" value="petrova"/>
             <column name="lastname" value="Petrova"/>
@@ -89,7 +89,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="12" author="zagurskaya@gmail.com">
+    <changeSet id="7" author="zagurskaya@gmail.com">
         <insert tableName="users">
             <column name="username" value="secure"/>
             <column name="lastname" value="Sidorov"/>
@@ -99,85 +99,35 @@
         </insert>
     </changeSet>
 
-    <changeSet id="14" author="zagurskaya@gmail.com">
-        <insert tableName="users">
-            <column name="username" value="test1"/>
-            <column name="password" value="2222"/>
-            <column name="lastname" value="Testov1"/>
-            <column name="firstname" value="Test1"/>
-            <column name="role" value="USER"/>
+    <changeSet id="8" author="zagurskaya@gmail.com">
+        <insert tableName="quotes">
+            <column name="date" value="2018-05-01"/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="description" value="quote example 1"/>
         </insert>
     </changeSet>
 
-    <changeSet id="16" author="zagurskaya@gmail.com">
-        <insert tableName="users">
-            <column name="username" value="test2"/>
-            <column name="password" value="3333"/>
-            <column name="lastname" value="Testov2"/>
-            <column name="firstname" value="Test2"/>
-            <column name="role" value="USER"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="18" author="zagurskaya@gmail.com">
-        <insert tableName="users">
-            <column name="username" value="test3"/>
-            <column name="password" value="4444"/>
-            <column name="lastname" value="Testov3"/>
-            <column name="firstname" value="Test13"/>
-            <column name="role" value="USER"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="20" author="zagurskaya@gmail.com">
-        <insert tableName="users">
-            <column name="username" value="test4"/>
-            <column name="password" value="5555"/>
-            <column name="lastname" value="Testov4"/>
-            <column name="firstname" value="Test4"/>
-            <column name="role" value="USER"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="22" author="zagurskaya@gmail.com">
-        <insert tableName="users">
-            <column name="username" value="test5"/>
-            <column name="password" value="666"/>
-            <column name="lastname" value="Testov5"/>
-            <column name="firstname" value="Test5"/>
-            <column name="role" value="USER"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="24" author="zagurskaya@gmail.com">
+    <changeSet id="9" author="zagurskaya@gmail.com">
         <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="2"/>
-            <column name="description" value="new rateKB $ 2.51"/>
+            <column name="description" value="quote example 2"/>
         </insert>
     </changeSet>
 
-    <changeSet id="25" author="zagurskaya@gmail.com">
-        <insert tableName="quotes">
-            <column name="date" value="2018-05-01"/>
-            <column name="user_id" valueNumeric="2"/>
-            <column name="description" value="new rateKB $ 2.51"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="26" author="zagurskaya@gmail.com">
+    <changeSet id="10" author="zagurskaya@gmail.com">
         <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
             <column name="user_id" valueNumeric="3"/>
-            <column name="description" value="new rateKB $ 2.52"/>
+            <column name="description" value="quote example 3"/>
         </insert>
     </changeSet>
 
-    <changeSet id="27" author="zagurskaya@gmail.com">
+    <changeSet id="11" author="zagurskaya@gmail.com">
         <insert tableName="quotes">
             <column name="date" value="2018-05-01"/>
-            <column name="user_id" valueNumeric="2"/>
-            <column name="description" value="new rateKB $ 2.53"/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="description" value="quote example 4"/>
         </insert>
     </changeSet>
 

@@ -36,53 +36,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public List<UserDTO> getUsers() {
-        List<User> users = userRepository.findAll();
-        List<UserDTO> dtos = users.stream()
-                .map(userConverter::toDTO)
-                .collect(Collectors.toList());
-        return dtos;
-    }
-
-    @Override
-    @Transactional
     public void add(UserDTO userDTO) {
         userDTO.setRole(RoleEnum.USER.name());
         userDTO.setPassword(encoder(userDTO.getPassword()));
         User user = userConverter.toEntity(userDTO);
         userRepository.save(user);
     }
-
-//    @Override
-//    @Transactional
-//    public void deleteUsersList(List<Long> ids) {
-//        ids.stream().forEach(id -> {
-//            delete(id);
-//            logger.info("deleted user with id = " + id);
-//        });
-//    }
-
-    @Override
-    @Transactional
-    public void delete(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
-        userRepository.delete(user);
-    }
-
-//    @Override
-//    @Transactional
-//    public void update(UserDTO userDTO) {
-//        User user = userConverter.toEntity(userDTO);
-//        userRepository.save(user);
-//    }
-
-//    @Override
-//    @Transactional
-//    public void updatePassword(UserDTO userDTO) {
-//        User user = userRepository.findById(userDTO.getId()).orElseThrow(() -> new EntityNotFoundException("User not found with id " + userDTO.getId()));
-//        user.setPassword(userDTO.getPassword());
-//        userRepository.save(user);
-//    }
 
     @Override
     @Transactional
@@ -91,53 +50,12 @@ public class UserServiceImpl implements UserService {
         UserDTO userDTO = userConverter.toDTO(loaded);
         return userDTO;
     }
+
     @Override
     @Transactional(readOnly = true)
     public boolean existsByUsername(String username) {
         return userRepository.existsByUsername(username);
     }
-//    @Override
-//    @Transactional
-//    public List<UserDTO> getActionUsersSortedByUserName() {
-//        List<User> users = userRepository.getActionUsersSortedByUserName();
-//        List<UserDTO> dtos = users.stream()
-//                .map(userConverter::toDTO)
-//                .collect(Collectors.toList());
-//        return dtos;
-//    }
-
-//    @Override
-//    @Transactional
-//    public UserDTO getUserById(Long id) {
-//        User loaded = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found with id  " + id));
-//        UserDTO userDTO = userConverter.toDTO(loaded);
-//        return userDTO;
-//    }
-
-//    @Override
-//    public UserDTO updateUserRole(Long userId, Long roleId) {
-//        User user = userRepository.findById(userId);
-//        Role role = roleRepository.findById(roleId);
-//        user.setRole(role);
-//        userRepository.merge(user);
-//        return userConverter.toDTO(user);
-//    }
-
-    private String randomPasswordWithEncoder(int length) {
-        String password = "";
-        for (int i = 0; i < length; i++) {
-            int oneNumber = (int) (Math.random() * 10);
-            password += String.valueOf(oneNumber);
-        }
-        logger.info("New password => " + password);
-        return encoder(password);
-    }
-
-//    public String returnPasswordSameAsLogin(UserDTO userDTO) {
-//
-//        return encoder(userDTO.getUsername());
-//    }
-
 
     private String encoder(String word) {
         String encode = passwordEncoder.encode(word);
