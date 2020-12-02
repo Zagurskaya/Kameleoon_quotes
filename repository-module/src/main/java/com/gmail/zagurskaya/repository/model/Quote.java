@@ -20,7 +20,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Table(name = "quotes")
-public class Quotes {
+public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

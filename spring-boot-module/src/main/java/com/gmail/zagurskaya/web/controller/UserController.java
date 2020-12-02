@@ -1,6 +1,6 @@
 package com.gmail.zagurskaya.web.controller;
 
-import com.gmail.zagurskaya.service.QuotesService;
+import com.gmail.zagurskaya.service.QuoteService;
 import com.gmail.zagurskaya.service.UserService;
 import com.gmail.zagurskaya.service.model.QuoteDTO;
 import com.gmail.zagurskaya.service.model.UserDTO;
@@ -32,21 +32,21 @@ import static com.gmail.zagurskaya.web.constant.URLConstant.URL_PROFILE_UPDATE_I
 public class UserController {
 
     private final UserService userService;
-    private final QuotesService quotesService;
+    private final QuoteService quoteService;
     private final UserUtil userUtil;
 
 
     @Autowired
-    public UserController(UserService userService, QuotesService quotesService, UserUtil userUtil) {
+    public UserController(UserService userService, QuoteService quoteService, UserUtil userUtil) {
         this.userService = userService;
-        this.quotesService = quotesService;
+        this.quoteService = quoteService;
         this.userUtil = userUtil;
     }
 
     @GetMapping()
     public String getUserPage(Model model) {
         UserDTO user = userUtil.getActualUser();
-        List<QuoteDTO> quoteDTOS = quotesService.getQuotesByUserId(user.getId());
+        List<QuoteDTO> quoteDTOS = quoteService.getQuotesByUserId(user.getId());
         String FullName = user.getFirstName() + " " + user.getLastName();
         model.addAttribute("FullName", FullName);
         model.addAttribute("quotes", quoteDTOS);
@@ -58,7 +58,7 @@ public class UserController {
             @RequestParam("id") Long id,
             Model model
     ) {
-        quotesService.delete(id);
+        quoteService.delete(id);
         return PATH_PROFILE_POST;
     }
 
@@ -69,7 +69,7 @@ public class UserController {
 
     @GetMapping(URL_PROFILE_UPDATE_ID)
     public String getUpdateQuote(@PathVariable("id") Long quoteId, Model model) {
-        QuoteDTO quoteDTOS = quotesService.getQuoteById(quoteId);
+        QuoteDTO quoteDTOS = quoteService.getQuoteById(quoteId);
         model.addAttribute("quote", quoteDTOS);
         return PATH_QUOTE;
     }
@@ -80,7 +80,7 @@ public class UserController {
                                   Model model) {
         UserDTO user = userUtil.getActualUser();
         quoteDTO.setUser(user);
-        quotesService.update(quoteDTO);
+        quoteService.update(quoteDTO);
         return PATH_PROFILE_POST;
     }
 
@@ -94,7 +94,7 @@ public class UserController {
                                   Model model) {
         UserDTO user = userUtil.getActualUser();
         quoteDTO.setUser(user);
-        quotesService.add(quoteDTO);
+        quoteService.add(quoteDTO);
         return PATH_PROFILE_POST;
     }
 }

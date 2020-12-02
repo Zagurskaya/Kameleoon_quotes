@@ -4,7 +4,7 @@ import com.gmail.zagurskaya.service.model.QuoteDTO;
 
 import java.util.List;
 
-public interface QuotesService {
+public interface QuoteService {
 
     List<QuoteDTO> getQuotes();
 
