@@ -37,9 +37,23 @@
                 <constraints nullable="false"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_review_user" references="users(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_quote_user" references="users(id)"/>
             </column>
             <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="zagurskaya@gmail.com">
+        <createTable tableName="statistics">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="quote_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_quote_statistic" references="quotes(id)"/>
+            </column>
+            <column name="mark" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>

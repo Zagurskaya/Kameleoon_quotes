@@ -14,6 +14,8 @@ public class URLConstant {
     public static final String URL_PROFILE_ADD = "/add";
 
     public static final String URL_QUOTES = "/quotes";
+    public static final String URL_PROS = "/quotes/pros";
+    public static final String URL_CONS = "/quotes/cons";
 
 
     public static final String PATH_PROFILE = "/user/profile";
