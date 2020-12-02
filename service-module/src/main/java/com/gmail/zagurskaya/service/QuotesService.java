@@ -15,4 +15,6 @@ public interface QuotesService {
     void add(QuoteDTO quoteDTO);
 
     void delete(Long id);
+
+    List<QuoteDTO> getQuotesByUserId(Long userId);
 }

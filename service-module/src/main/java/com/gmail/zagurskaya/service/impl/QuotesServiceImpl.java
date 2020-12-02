@@ -68,4 +68,13 @@ public class QuotesServiceImpl implements QuotesService {
         quote.setDate(LocalDate.now());
         quotesRepository.save(quote);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<QuoteDTO> getQuotesByUserId(Long userId) {
+        List<Quotes> quotesList = quotesRepository.findAllByUserId(userId);
+        return quotesList.stream()
+                .map(quotesConverter::toDTO)
+                .collect(Collectors.toList());
+    }
 }

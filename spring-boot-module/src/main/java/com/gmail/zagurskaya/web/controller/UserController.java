@@ -45,8 +45,8 @@ public class UserController {
 
     @GetMapping()
     public String getUserPage(Model model) {
-        List<QuoteDTO> quoteDTOS = quotesService.getQuotes();
         UserDTO user = userUtil.getActualUser();
+        List<QuoteDTO> quoteDTOS = quotesService.getQuotesByUserId(user.getId());
         String FullName = user.getFirstName() + " " + user.getLastName();
         model.addAttribute("FullName", FullName);
         model.addAttribute("quotes", quoteDTOS);

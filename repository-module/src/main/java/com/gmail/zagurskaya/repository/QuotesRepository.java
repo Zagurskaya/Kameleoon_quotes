@@ -7,7 +7,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface QuotesRepository extends JpaRepository<Quotes, Long> {
+
+    List<Quotes> findAllByUserId(Long userId);
 
     @Modifying
     @Query("delete from Quotes q where q.id = :id")
