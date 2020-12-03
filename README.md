@@ -28,6 +28,10 @@ ____
 	* Create new quote
 	* Delete his quote
 	* Update his quote
+	
+### User from DB
+   Login / Password\
+   admin/admin
 		
 ____
 ### Assembly and start-up instructions
