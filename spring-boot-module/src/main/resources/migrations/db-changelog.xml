@@ -51,12 +51,18 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="quote_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_quote_statistic" references="quotes(id)"/>
+                <constraints nullable="false" />
             </column>
             <column name="mark" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint baseColumnNames="quote_id"
+                                 baseTableName="statistics"
+                                 constraintName="fk_statistics_quotes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="quotes"
+                                 onDelete="CASCADE"/>
     </changeSet>
 
     <changeSet id="4" author="zagurskaya@gmail.com">
