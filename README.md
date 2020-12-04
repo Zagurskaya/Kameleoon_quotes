@@ -16,7 +16,7 @@ ____
         * View all quotes
 		* Vote on upvote  quotes (pros) 
 		* vote on downvote quotes (cons)
-		
+        * View top 10 quotes
     
 ### Users
 
